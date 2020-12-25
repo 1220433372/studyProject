@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <style>
+      ul {
+        list-style: none;
+      }
+
+      li {
+        margin: 20px auto;
+      }
+
+      p {
+        margin: 80px auto;
+        font-size: 20px;
+      }
+
+      .btn-info {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border-radius: 25%;
+        width: 20px;
+        height: 20px;
+        background-color: #138496;
+        border-color: #117a8b;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app" class="container">
+      <h1>您的购物车</h1>
+      <ul>
+        <li v-for="(item,index) in shoplist">
+          <input
+            type="checkbox"
+            :value="item"
+            v-model="list"
+            @change="ListChange"
+          />
+          {{item}}
+
+          <div class="btn">
+            <button class="btn-info" @click="reduce(index)">-</button>
+            {{item.count}}
+            <button class="btn-info" @click="add(index)">+</button>
+          </div>
+        </li>
+
+        <div class="checkbox">
+          <label>
+            <input
+              type="checkbox"
+              value=""
+              v-model="isAllSelect"
+              @click="changeCheckBox"
+            />
+            全选
+          </label>
+        </div>
+
+        <p>需付款:{{getTotal}}元</p>
+      </ul>
+      {{list}}
+      <input type="checkbox" value="s" v-model="ischecked" />
+      <input type="checkbox" value="s2" v-model="ischecked" />
+    </div>
+  </body>
+
+  <script>
+    new Vue({
+      el: "#app",
+      data: {
+        ischecked: [],
+        list: [],
+        isAllSelect: false,
+        shoplist: [
+          {
+            name: "冰激凌",
+            price: 3,
+            count: 1,
+            id: 1,
+          },
+          {
+            name: "香油条",
+            price: 4.5,
+            count: 1,
+            id: 1,
+          },
+          {
+            name: "泡面",
+            price: 5,
+            count: 1,
+            id: 1,
+          },
+        ],
+      },
+      computed: {
+        getTotal() {
+          var sum = 0;
+          for (let i of this.list) {
+            sum = sum + i.price * i.count;
+          }
+          return sum;
+        },
+      },
+      methods: {
+        changeCheckBox() {
+          if (!this.isAllSelect) {
+            this.list = this.shoplist;
+          } else {
+            this.list = [];
+          }
+        },
+        ListChange() {
+          if (this.list.length === this.shoplist.length) {
+            this.isAllSelect = true;
+          } else {
+            this.isAllSelect = false;
+          }
+        },
+        add(index) {
+          this.shoplist[index].count < 100
+            ? this.shoplist[index].count++
+            : alert("不能大于100");
+        },
+        reduce(index) {
+          this.shoplist[index].count > 1
+            ? this.shoplist[index].count--
+            : (this.shoplist[index].count = 1);
+        },
+      },
+    });
+  </script>
+</html>

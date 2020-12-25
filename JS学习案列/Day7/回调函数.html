@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day7</title>
+  </head>
+
+  <body>
+    <script>
+      //回调函数
+
+      function request(cd) {
+        console.log("请求组织支援");
+        cd("胜利了");
+        console.log("德玛西亚");
+      }
+
+      function run(str) {
+        console.log("天降神兵");
+        console.log("敌人已被消灭！" + str);
+      }
+
+      request(run);
+    </script>
+  </body>
+</html>

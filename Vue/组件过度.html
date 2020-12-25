@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+		<link rel="stylesheet" href="css/animate.min.css" />
+		<style>
+			#app {
+				width: 100%;
+				overflow: hidden;
+			}
+
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				list-style: none;
+				max-width: 500px;
+				margin: 0px auto;
+				padding: 0;
+			}
+			li {
+				padding: 10px;
+				display: inline-block;
+				flex-grow: 1;
+				flex-basis: 100px;
+				text-align: center;
+				border: 1px solid #eee;
+				background-color: #aaa;
+			}
+			.btn {
+				position: fixed;
+				width: 100%;
+				padding: 10px 0px;
+				justify-content: center;
+				align-items: center;
+				box-sizing: border-box;
+				bottom: 50px;
+				margin: 0px auto;
+			}
+			a {
+				cursor: pointer;
+			}
+
+			/* keyframs关键帧动画的使用 */
+			.fade-enter-active {
+				animation: fadeInLeft 0.3s;
+			}
+			.fade-leave-active {
+				animation: fadeInLeft 0.3s reverse;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<keep-alive>
+				<transition name="fade" mode="out-in">
+					<component :is="who"></component>
+				</transition>
+			</keep-alive>
+
+			<div class="btn">
+				<ul>
+					<li><a @click="who = 'child'">Home</a></li>
+					<li><a @click="who = 'second'">second</a></li>
+					<li><a @click="who = 'third'">third</a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				who: "child",
+			},
+			components: {
+				child: {
+					template: `
+					<div>Home
+						<input type="text" />
+					</div>
+					`,
+				},
+				second: {
+					template: `
+					<div>List</div>
+					`,
+				},
+				third: {
+					template: `
+					<div>Good</div>
+					`,
+				},
+			},
+		});
+	</script>
+</html>

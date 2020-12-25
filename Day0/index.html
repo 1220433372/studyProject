@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>axios</title>
+    <script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div id="div1">
+      <input type="button" name="" id="get" value="获取" @click="get" />
+      <input type="button" name="" id="post" value="提交" />
+    </div>
+  </body>
+
+  <script type="text/javascript">
+    new Vue({
+      el: "#div1",
+      data: {},
+      methods: {
+        get: function () {
+          axios
+            .get("https://autumnfish.cn/api/joke/list?num=3")
+            .then(function (response) {
+              console.log(response);
+            });
+        },
+        // post:function(){
+
+        // }
+      },
+    });
+  </script>
+</html>

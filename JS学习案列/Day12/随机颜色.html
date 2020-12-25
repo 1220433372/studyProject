@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        margin: 100px auto;
+        text-align: center;
+        line-height: 300px;
+        width: 300px;
+        height: 300px;
+        font-size: 18px;
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box">摇起来</div>
+  </body>
+  <script>
+    function getStyle(node, cssStyle) {
+      return node.currentStyle
+        ? node.currentStyle[cssStyle]
+        : getComputedStyle(node)[cssStyle];
+    }
+    function getColor() {
+      var str =
+        "rgba(" +
+        parseInt(Math.random() * 256) +
+        "," +
+        parseInt(Math.random() * 256) +
+        "," +
+        parseInt(Math.random() * 256) +
+        ",1)";
+      return str;
+    }
+
+    var box = document.getElementById("box");
+    var speed = 10;
+
+    var index = 0;
+    // 变化字体
+    setInterval(() => {
+      //获取字体大小
+      var size = parseInt(getStyle(box, "fontSize"));
+      box.style.fontSize = size + speed + "px";
+      index++;
+      if (index == 6) {
+        speed *= -1;
+        index = 0;
+      }
+      box.style.color = getColor();
+    }, 1000);
+
+    var size = 18;
+    function sizeSmall() {
+      box.style.fontStyle = size;
+    }
+    //   alert(getColor());
+  </script>
+</html>

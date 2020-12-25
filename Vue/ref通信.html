@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" name="" value="" ref="mytext" @keyup.enter="handle" />
+
+			<button @click="handle">点击</button>
+
+			<child ref="mychild"></child>
+		</div>
+	</body>
+	<script>
+		Vue.component("child", {
+			template: `
+		          <div>
+		              <button>点击</button>
+		          </div>
+
+		                `,
+			data() {
+				return {
+					childMsg: "这是子组件的状态",
+				};
+			},
+			methods: {
+				add() {
+					console.log("这是子组件的方法");
+				},
+				myfunction(data) {
+					console.log("这是子组件的方法", data);
+				},
+			},
+		});
+		new Vue({
+			el: "#app",
+			data: {
+				msg: "",
+			},
+			methods: {
+				handle: function () {
+					console.log(this.$refs); //访问子组件的数据
+					this.$refs.mychild.add();
+					this.$refs.mychild.myfunction("这是带了实参的");
+				},
+			},
+		});
+		// ref放在标签上，拿到的是原生节点
+		// ref放在组件上，拿到的是组件对象
+	</script>
+</html>

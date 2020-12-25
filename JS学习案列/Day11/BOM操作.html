@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      //   var res = confirm("确定要离开嘛?");
+      //   alert(res);
+
+      //   var a = prompt("你好", "请输入");
+      //   alert(a);
+      //   function intent() {
+      //     window.open("https://www.baidu.com/", "牛逼");
+      //   }
+      function getHistory() {
+        alert(window.history.length);
+      }
+    </script>
+  </head>
+  <body>
+    <!-- <button onclick="intent()">打开窗口</button> -->
+    <button onclick="getHistory()">获取当前窗口历史记录</button>
+    <button onclick="history.back()">返回</button>
+    <button onclick="history.forward()">前进</button>
+    <button onclick="history.go(0)">go</button>
+  </body>
+</html>

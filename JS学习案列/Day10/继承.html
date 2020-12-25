@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>继承</title>
+  </head>
+  <body>
+    <script>
+      function Employee(name, position) {
+        this.name = name;
+        this.position = position;
+        this.sinIn = function () {
+          console.log(this.name + "打卡");
+        };
+      }
+
+      var emp1 = new Employee("张三", "前端工程师");
+      var manager = Object.create(emp1);
+      console.log(manager);
+      console.log(manager.name);
+
+      var prototypemanager = Object.getPrototypeOf(manager);
+      console.log(prototypemanager);
+
+      var a = Object.getPrototypeOf(prototypemanager);
+      console.log(a);
+      var b = Object.getPrototypeOf(a);
+      console.log(b);
+    </script>
+  </body>
+</html>

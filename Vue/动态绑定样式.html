@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="js/vue.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h3 :style="{fontSize:size + 'px'}">你好啊</h3>
+			<button @click="size += 10">加大字体</button>
+			<button @click="size -= 10">减小字体</button>
+		</div>
+	</body>
+	<script>
+		let vm = new Vue({
+			el: "#app",
+			data: {
+				size: 30,
+			},
+			methods: {},
+		});
+	</script>
+</html>

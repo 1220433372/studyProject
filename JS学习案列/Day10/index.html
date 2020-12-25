@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day10</title>
+  </head>
+  <body>
+    <script>
+      //getter
+      var stu = {
+        Myname: "德华",
+        age: 68,
+        get getName() {
+          return this.Myname;
+        },
+        set setName(name) {
+          this.Myname = name;
+        },
+      };
+
+      console.log(stu.getName);
+      stu.setName = "张三";
+      console.log(stu.getName);
+    </script>
+  </body>
+</html>

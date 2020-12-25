@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="js/vue.js"></script>
+		<!-- 1. 引入  -->
+		<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0/axios.js"></script>
+		<title></title>
+		<style>
+			ul {
+				width: 300px;
+				height: 400px;
+				overflow: auto;
+			}
+			li {
+				cursor: pointer;
+				list-style: none;
+				border: 1px solid #333;
+			}
+			.playing {
+				background-color: beige;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<input
+				type="text"
+				v-model="something"
+				@keyup.enter="getData"
+				placeholder="请输入内容"
+			/>
+			<button @click="getData">get</button>
+			<button @click="end(index)" v-show="isShow">next</button>
+			<button
+				@click="isRepeat = !isRepeat"
+				v-repeat="isRepeat ? 'yes':'no'"
+			></button>
+			<section>
+				<ul>
+					<li
+						v-for="(item, index) in musicList"
+						:key="index"
+						@click="playMusic(item.id,index)"
+					>
+						{{item.name}}---{{item.id}}
+					</li>
+				</ul>
+				<audio
+					:src="musicUrl"
+					controls
+					autoplay
+					:loop="isRepeat"
+					class="myaudio"
+					@ended="end"
+					@play="playing"
+				></audio>
+			</section>
+		</div>
+	</body>
+	<script>
+		// 2. 配置全局配置请求
+		axios.defaults.baseURL = 'https://autumnfish.cn/';
+		axios.defaults.timeout = 5000;
+		//获取每一行歌曲的li
+		var liTag = document.getElementsByTagName('li');
+
+		let vm = new Vue({
+			el: '#app',
+			data: {
+				isShow: false,
+				msg: '循环',
+				something: '',
+				musicUrl: '',
+				musicList: [],
+				nextiD: '',
+				index: 0,
+				isRepeat: false,
+			},
+			directives: {
+				// 自定义指令判断是循环播放还是顺序播放
+				repeat: function (el, bind, arg) {
+					if (bind.value === 'no') {
+						el.innerText = '循环';
+					} else {
+						el.innerText = '顺序';
+					}
+				},
+			},
+			methods: {
+				getData() {
+					// 	axios
+					// 		.get('/users')
+					// 		.then((result) => {
+					// 			console.log(result);
+					// 		})
+					// 		.catch((err) => {});
+					// },
+					axios({
+						url: '/search?',
+						method: 'get',
+						params: {
+							keywords: this.something,
+						},
+					})
+						.then((result) => {
+							this.musicList = result.data.result.songs;
+							console.log(result);
+						})
+						.catch((err) => {
+							console.log(err);
+						});
+				},
+				playMusic(id, index) {
+					// 将前一个播放的行间背景颜色改为白色
+					liTag[this.index].style.backgroundColor = '#fff';
+					this.index = index;
+
+					axios({
+						url: '/song/url?',
+						method: 'get',
+						params: {
+							id,
+						},
+					})
+						.then((result) => {
+							this.musicUrl = result.data.data[0].url;
+							console.log(result.data.data[0].url);
+						})
+						.catch((err) => {
+							console.log(err);
+						});
+				},
+				end(index) {
+					console.log(index);
+
+					this.playMusic(this.musicList[index + 1].id, index + 1);
+					// this.musicUrl = this.musicList[this.index + 1].data.result.songs;
+					console.log(this.musicList[index + 1].name);
+				},
+				playing() {
+					this.isShow = true;
+					liTag[this.index].style.backgroundColor = 'red';
+					console.log(liTag);
+				},
+			},
+		});
+	</script>
+</html>

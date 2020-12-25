@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="js/vue.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<h3>{{msg|touppercase}}<h3>
+				<h3>{{a|sort}}</h3>
+		</div>
+	</body>
+	<script>
+		let vm = new Vue({
+			el: "#app",
+			data: {
+				msg: "abcdefg",
+				a:'123454689'
+			},
+			methods: {},
+			filters: {
+				touppercase: function (value) {
+					return value.toUpperCase();
+				},
+				// 从大到小
+				"sort":function(value){
+					return value.split('').sort().reverse().join('');
+				}
+			},
+		});
+	</script>
+</html>

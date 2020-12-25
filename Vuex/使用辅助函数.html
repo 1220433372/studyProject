@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="js/vue.js"></script>
+	<script src="https://unpkg.com/vuex@3.5.1/dist/vuex.js"></script>
+	<title></title>
+</head>
+
+<body>
+	<div id="app">
+		{{this.$store.state.price}}
+	</div>
+</body>
+<script>
+	
+	// 建立一个仓库
+	var store = new Vuex.Store({
+		state: {
+			price: 100,
+			shoplist: [
+				{
+					name: '冰激凌',
+					price: 3,
+					count: 1,
+					id: 1,
+				},
+				{
+					name: '香油条',
+					price: 4.5,
+					count: 1,
+					id: 1,
+				},
+				{
+					name: '泡面',
+					price: 5,
+					count: 1,
+					id: 1,
+				},
+			],
+		},
+		mutations: {
+			add(state, index) {
+				state.shoplist[index].count++;
+			},
+			reduce(state, index) {
+				state.shoplist[index].count--;
+			},
+		},
+		// getters的使用
+		getters: {
+			sum: (state) => {
+				let sum = 0;
+				sum = state.shoplist.reduce(function (prev, cur) {
+					return prev + cur.price * cur.count;
+				}, 0);
+				return sum;
+			},
+		},
+	});
+
+	let vm = new Vue({
+		el: '#app',
+		store,
+		data: {},
+		computed: {
+			totalprice() {
+				console.log(this.$store);
+				return this.$store.getters.sum;
+			},
+		},
+	});
+</script>
+
+</html>

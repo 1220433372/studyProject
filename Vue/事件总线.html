@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<wechartauthor></wechartauthor>
+			<user></user>
+		</div>
+	</body>
+	<script>
+		// 事件总线
+		//首先定义一个Vue实例
+		var bus = new Vue();
+
+		Vue.component("wechartauthor", {
+			template: `
+                <div>
+                    <input type="text" ref='mytext'/>
+                    <button @click='publish'>发布</button>
+                </div>
+
+            `,
+			methods: {
+				publish() {
+					bus.$emit("publish", this.$refs.mytext.value);
+				},
+			},
+		});
+
+		Vue.component("user", {
+			template: `
+                <div>
+                    我是一个用户
+                </div>
+            `,
+			mounted() {
+				bus.$on("publish", (data) => {
+					console.log("接收到", data);
+				});
+			},
+		});
+
+		new Vue({
+			el: "#app",
+			data: {},
+		});
+	</script>
+</html>

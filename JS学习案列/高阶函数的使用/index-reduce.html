@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+	<script>
+		var arr = [1, 5, 6, 7, 8];
+		/*   reduce 为数组中的每一个元素依次执行回调函数，
+				      不包括数组中被删除或从未被赋值的元素，
+				      接受四个参数：初始值（如果没有初始化，就使用第一个元素），当前正在使用元素值，当前索引，调用(数组本身) */
+		var sum = arr.reduce(function (pre, ele, index, self) {
+			// console.log(pre);
+			// console.log(ele);
+			// console.log(index);
+			return pre + ele;
+		}, 0);
+		console.log(sum);
+		// console.clear();
+		var books = [
+			{ id: 1001, name: "JavaScript高级教程", price: 85 },
+			{ id: 1002, name: "Java基础知识", price: 90 },
+			{ id: 1003, name: "现代操作系统", price: 108 },
+			{ id: 1004, name: "JSP基础知识", price: 75 },
+		];
+
+		// 设置初始值的reduce
+		// var sum = books.reduce(function (prev, ele, index) {
+		// 	// return prev.price + ele.price;
+		// }, 0); //设置初始值为0
+
+		// for of 拿到的是元素本身
+		// for (let item of books) {
+		// 	console.log(item.price);
+		// }
+
+		// for in 拿到的是元素的下标
+		// for (let i in books) {
+		// 	console.log(i);
+		// }
+		// console.log(sum);
+
+		var sum = books.reduce(function (prev, book, index) {
+			return prev + book.price;
+		}, 0);
+
+		console.log(sum);
+
+		(function (a) {
+			console.log(a);
+		})(1);
+
+		console.log();
+	</script>
+</html>

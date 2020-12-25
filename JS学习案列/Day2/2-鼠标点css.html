@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标点击显示详情</title>
+    <!-- style样式 -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            /* CSS新盒子模型属性控制 width/height最终的宽高 */
+            box-sizing: border-box;
+            margin: 500px auto 10px;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid lightcoral;
+            position: relative;
+            /* 手掌形状 */
+            cursor: pointer;
+        }
+
+
+        .box .detail {
+            z-index: -1;
+            display: none;
+            position: absolute;
+            right: 0;
+            top: -110px;
+            box-sizing: border-box;
+            width: 200px;
+            height: 0px;
+            border: 1px solid lightcoral;
+            line-height: 100px;
+            text-align: center;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- js 通过id获取 -->
+    <div class="box" id="box">
+        <span>孙某辉</span>
+        <div class="detail" id="detail">
+            <span id="txt"></span>
+
+        </div>
+    </div>
+    <!-- 
+        基于操作DOM的方式实现业务需求
+        1.想操作谁就先获取谁
+        2.给某元素绑定某事件
+        3.在事件触发的时候修改元素的样式等
+     -->
+
+    <!-- import js -->
+
+    <script>
+        //document.getElementById([id]):在整个文档中,通过元素的id获取到当前这个元素对象
+        let box = document.getElementById('box');
+        let detail = document.getElementById('detail');
+        let txt = document.getElementById("txt");
+        //元素对象.onxxx=function(){}: 事件绑定  xxx事件类型(click/mouseover/mousedown/keydown)
+        box.onclick = function () {
+            detail.style.display = 'block';
+            txt.innerHTML = "你真牛逼！";
+            txt.style.color = "red";
+
+
+        }
+    </script>
+</body>
+
+</html>

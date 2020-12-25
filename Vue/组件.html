@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- <mycon></mycon> -->
+			{{title}}
+			<mycon @msg="get($event)"></mycon>
+
+			<child :msg="msg"></child>
+			{{childMsg}}
+		</div>
+	</body>
+	<script>
+		// 定义全局组件
+		Vue.component("mycon", {
+			template: `
+        <div>
+          <p/>
+          <button @click='sengMsg'>传值</button>
+          
+
+		    </div>`,
+
+			methods: {
+				myfunction() {
+					alert("这是一个弹窗");
+				},
+				sengMsg() {
+					this.$emit("msg", "这是子传父的值");
+				},
+			},
+		});
+
+		new Vue({
+			el: "#app",
+			data: {
+				msg: "这是父传子的值",
+				childMsg: "",
+				title: "这是全局组件",
+			},
+			methods: {
+				get(msg) {
+					this.childMsg = msg;
+				},
+			},
+
+			// 定义局部组件
+			components: {
+				child: {
+					data() {
+						return {
+							content: "这是局部组件",
+						};
+					},
+					props: {
+						msg: {
+							type: String,
+							default: "nb ",
+						},
+					},
+					methods: {
+						change() {
+							this.content = this.msg;
+						},
+					},
+					template: `
+		              <div>
+		                <p>{{content}}</p>
+		                    <button @click='change'>点击</button>
+		             </div>
+
+		      `,
+				},
+			},
+		});
+	</script>
+</html>

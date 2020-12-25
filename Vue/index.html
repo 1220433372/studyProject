@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="js/vue.js"></script>
+		<title>Document</title>
+		<style>
+			p {
+				font-size: 18px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="app">
+			<p v-for="item in arr" v-rainbow>{{item|size}}</p>
+			<input type="text" v-model="mytext" />{{mytext}}
+			<br />
+			<input type="checkbox" name="q" id="" v-model="isCheck" />记录用户名
+
+			<!-- v-model 绑定单选框 -->
+
+			<br />
+			<label for="">性别</label>
+
+			<div class="input-group">
+				<label>
+					<input
+						type="radio"
+						name=""
+						id="input"
+						value=" 男"
+						v-model="isRadio"
+					/>
+					男
+				</label>
+
+				<label>
+					<input type="radio" name="" id="input" value="女" v-model="isRadio" />
+					女
+				</label>
+				<br />
+				兴趣爱好
+				<br />
+				<!-- v-model绑定复选框 -->
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="打篮球" v-model="hobby" />
+						打篮球
+					</label>
+					<label>
+						<input type="checkbox" value="唱歌" v-model="hobby" />
+						唱歌
+					</label>
+					<label>
+						<input type="checkbox" value="跑步" v-model="hobby" />
+						跑步
+					</label>
+					<br />
+					{{hobby}}
+				</div>
+			</div>
+			{{isRadio}}
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				arr: [1, 2, 3, 4, 5, 6],
+				mytext: "",
+				isCheck: true,
+				isRadio: "",
+				hobby: [],
+			},
+			directives: {
+				rainbow: function (el, binding, vnode) {
+					el.style.color = "#" + Math.random().toString(16).slice(2, 8);
+				},
+			},
+			filters: {
+				size: function (value) {
+					return value + "...";
+				},
+			},
+		});
+	</script>
+</html>

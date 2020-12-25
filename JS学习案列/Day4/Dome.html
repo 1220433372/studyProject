@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dya4</title>
+</head>
+
+<body>
+    <script>
+        const start = Date.now();
+
+        for (let i = 0; i < 2000000000; i++) {}
+        const end = Date.now();
+
+        console.log((end - start) / 1000 + "秒");
+    </script>
+</body>
+
+</html>

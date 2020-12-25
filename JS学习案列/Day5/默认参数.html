@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>默认参数</title>
+  </head>
+
+  <body>
+    <script>
+      function name(boy = "sunxiansheng", girl = "luozhiyi") {
+        console.log(boy + girl);
+      }
+      //如果我们调用函数没有传值过去时函数会使用默认值,若带了参数就会替换原来的默认值
+      name();
+      name("你好"); //可以只传一个参数 另一个没有的就用默认的
+    </script>
+  </body>
+</html>

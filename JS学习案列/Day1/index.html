@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day1</title>
+  </head>
+
+  <!--Day1笔记-->
+
+  <!-- 
+parseInt(变量名) ：类型转换
+
+querySelector() 方法返回文档中匹配指定 CSS 选择器的一个元素。
+
+注意： querySelector() 方法仅仅返回匹配指定选择器的第一个元素。
+如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
+
+document.addEventListener() 方法用于向文档添加事件。
+
+innerHTM改变文字
+-->
+
+  <body>
+    <p id="one">请输入年龄</p>
+    <input id="dome" type="text" name="age" />
+
+    <span id="msg"></span>
+
+    <script>
+      let span = document.querySelector("#msg");
+
+      let test = document.getElementById("dome");
+
+      document
+        .querySelector('[name = "age"]')
+        .addEventListener("keyup", function () {
+          //当键盘松开键时就会执行这个函数
+          let patt = /^[a-zA-Z]+$/.test(test.value);
+          msg = "";
+          if (patt) {
+            // test.style.fontSize = ("90px")
+            //还可以js 更改css
+            span.innerHTML = "不能输入字母";
+          } else if (this.value > 90) {
+            span.innerHTML = "年龄不能超过90岁";
+          } else {
+            span.innerHTML = "";
+          }
+        });
+    </script>
+  </body>
+</html>

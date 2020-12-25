@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="js/vue.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css" />
+	<script src="https://unpkg.com/vuex@3.5.1/dist/vuex.js"></script>
+	<title></title>
+	<style>
+		.badge1 {
+			min-width: 10px;
+			padding: 3px 7px;
+			font-size: 12px;
+			font-weight: bold;
+			color: rgb(248, 254, 255);
+			background-color: rgba(148, 141, 141, 0.692);
+			border-radius: 10px;
+		}
+
+		.main {
+			padding-right: 10px;
+			padding-left: 10px;
+			margin-right: 20%;
+			margin-left: 20%;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="app">
+		<div class="main">
+			<child></child>
+			<ul class="list-group">
+				<li v-for="(item,index) in this.$store.state.shoplist" class="list-group-item">
+					名称：{{item.name}} <br />
+					<span class="badge1"> 数量：{{item.count}}</span>
+					<button class="btn-info btn-xs col-sm-offset-10" @click="$store.commit('add',index)">
+						+
+					</button>
+					<button class="btn-info btn-xs" @click="$store.commit('reduce',index)">
+						-
+					</button>
+				</li>
+
+				<p class="text-right h3">需付款:{{totalprice}}元</p>
+			</ul>
+		</div>
+	</div>
+</body>
+<script>
+	// 建立一个仓库
+	// 为组件
+	var store = new Vuex.Store({
+		state: {
+			price: 100,
+			shoplist: [
+				{
+					name: '冰激凌',
+					price: 3,
+					count: 1,
+					id: 1,
+				},
+				{
+					name: '香油条',
+					price: 4.5,
+					count: 1,
+					id: 1,
+				},
+				{
+					name: '泡面',
+					price: 5,
+					count: 1,
+					id: 1,
+				},
+			],
+		},
+		mutations: {
+			add(state, index) {
+				state.shoplist[index].count++;
+			},
+			reduce(state, index) {
+				state.shoplist[index].count--;
+			},
+		},
+		// getters的使用
+		getters: {
+			sum: (state) => {
+				let sum = 0;
+				sum = state.shoplist.reduce(function (prev, cur) {
+					return prev + cur.price * cur.count;
+				}, 0);
+				return sum;
+			},
+		},
+	});
+
+	let vm = new Vue({
+		el: '#app',
+		store,
+		data: {},
+		computed: {
+			totalprice() {
+				console.log(this.$store);
+				return this.$store.getters.sum;
+			},
+		},
+		components: {
+			child: {
+				template: `
+		        <div>
+				你好呀
+		        </div>
+		        `,
+			},
+		},
+	});
+</script>
+
+</html>

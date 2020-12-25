@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWeb</title>
+</head>
+
+<body>
+
+    <script>
+        // var i = 'sunxainsheng'
+
+        // document.write(i);
+        // console.log(i);  
+
+        /* 变量 var
+        不用加变量类型
+        可以
+        var web = 10;
+        var str = "sunxiansheng";
+        var i = [1,2,3,4];
+        变量 let :必须先声明再来使用.必须放在使用之前  
+        
+        变量 const（常量）:声明赋值后值不可改变
+        
+        Object.freeze(变量名);冻结const引用变量值 即不可改变变量的值
+
+        var - let - const的共同点
+
+        !!传值 传址
+         
+        传值
+        var a = 1;
+        var b = a; 
+        传址    
+        var e = {};
+        var c = e;
+        */
+        const x = 10;
+
+        const n = { //引用类型
+            name: "sunxiansheng",
+            age: 20
+        };
+
+        Object.freeze(n);
+        n.name = "大帅哥"
+
+        console.log(n.name);
+
+        function run(a = 3, b = 3) {
+
+            console.log(a);
+
+        }
+        run(1,2);
+        // var web = "luozhiyi";
+
+        // var i = [1, 2, 3, 4];
+
+        // web = 99;
+        // console.log(typeof web); //typeof + 变量  返回变量的类型
+    </script>
+</body>
+
+</html>

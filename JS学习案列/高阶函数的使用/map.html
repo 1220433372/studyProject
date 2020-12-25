@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+	<script>
+		var nums = [1, 5, 8, 6, 7, 8, 9];
+
+		// map函数 有三个参数 元素 下标  本身
+		var s = nums.map(function (n, index) {
+			console.log(index);
+			return n * 2;
+		});
+		console.log(s);
+	</script>
+</html>

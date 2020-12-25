@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>class</title>
+  </head>
+  <body>
+    <script>
+      class Employee {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        SinIn() {
+          console.log(this.name + "打卡签到");
+        }
+
+        get info() {
+          return this.name + " " + this.age;
+        }
+        set info(info) {
+          let [name, age] = info.split(" ");
+          this.name = name;
+          this.age = age;
+        }
+      }
+
+      var emp = new Employee("德华", 20);
+      emp.info = "星驰 68";
+
+      console.log(emp.name);
+      console.log(emp.age);
+      console.log(emp.info);
+      emp.SinIn();
+
+      class Manager extends Employee {
+        constructor(name, age, position) {
+          super(name, age);
+          this.position = position;
+        }
+      }
+      var manager = new Manager("学友", 58, "歌手");
+      //   manager.info = "古天乐 54";
+      console.log(manager);
+      var a = `你好,${"世界"}
+      
+      什么东西
+      `;
+
+      console.log(a);
+    </script>
+  </body>
+</html>

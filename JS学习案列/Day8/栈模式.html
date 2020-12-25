@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>栈模式/队列模式</title>
+  </head>
+
+  <body>
+    <script>
+      var stack = [1, 2, 3, 8, 9, 5, 6, 7];
+
+      // stack.push(4);
+      // // push 在后面添加元素
+      // stack.push(5, 6, 7);
+      // console.log(stack);
+
+      //队列模式
+      //shift() 方法用于把数组的第一个元素从其中删除，并返回第一个元素的值。
+      //unshift() 方法可向数组的开头添加一个或多个元素，并返回新的长度。
+      //   stack.unshift(4);
+      //   stack.push(4);
+
+      //   console.log(stack.shift(2));
+      //   console.log(stack);
+      console.log(stack.unshift(6, 3));
+      //   console.log(stack);
+
+      //   console.log(stack.pop());
+      console.log(stack);
+      // 数组名.reverse(); 数组的反转
+
+      // console.log(stack.unshift(4,5,6));
+
+      //   var s = [1, 2, 3, 4, 5, 6];
+
+      //   console.log(s.reverse()); //原数组也会被改变
+
+      //   console.log(s);
+    </script>
+  </body>
+</html>

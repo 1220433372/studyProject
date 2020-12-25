@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间TDate</title>
+</head>
+<body>
+    <script>
+
+const str = [2020,9,15,12,25];
+
+const  date = new Date(...str);
+console.log(date);
+
+//时间戳的转换
+
+console.log(date.getTime());
+console.log(Number(date));
+console.log(date.valueOf());
+console.log(date*1);
+
+// 以上方法都能转换成时间戳
+
+// 如果将时间戳转换回来
+
+const time = date.valueOf();
+console.log(new Date(time));
+    </script>
+</body>
+</html>

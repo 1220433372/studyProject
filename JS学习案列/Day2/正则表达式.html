@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>正则表达式</title>
+  </head>
+  <!-- Day2 -->
+
+  <!-- 
+
+ 
+ replace():替换 返回替换后的字符串
+ search() :寻找 返回目标的下标
+
+
+ 正则表达式的修饰符
+-- i:对大小写不敏感的匹配
+-- \d:查找数字
+-- \s:查找空白字符
+
+-- ^ : 以什么开头
+-- +$ : 以什么结尾
+-- [] :用于匹配某个范围
+
+--（x|y）:查找一"|" 分开的选项
+
+-- 加{n}的修饰符 表示至少包含n个
+
+
+ RegExp 对象是一个预定义了属性和方法的正则表达式对象。
+ 
+ --test() 方法是一个正则表达式方法。
+
+ test() 方法用于检测一个字符串是否匹配某个模式，(首先创建正则表达式)
+
+  ！！！ let patt = /^[a-zA-Z]+$/.test("adasdsda");
+
+
+ 如果字符串中含有匹配的文本，
+ 则返回 true，否则返回 false。
+ -->
+
+  <body>
+    <span id="demo">孙先生最爱abc</span>
+    <p id="one">?</p>
+
+    <button onclick="myfunction()">点击</button>
+
+    <p id="two">abcd</p>
+    <button onclick="isHas()">匹配</button>
+    <script>
+      function isHas() {
+        let str = "/" + document.getElementById("two").innerHTML + "/";
+
+        let patt = /^[a-zA-Z]$/.test("ad1asdsda");
+
+        console.log(patt);
+      }
+
+      //   -----------------------------------------------------------
+      function myfunction() {
+        let str = document.getElementById("demo").innerHTML;
+
+        let txt = str.replace(/abc/i, "nihao"); //替换 i 不分大小写
+
+        let add = str.search(/a/i);
+        //查找
+        //返回下标值 从0开始
+
+        console.log(add);
+        // document.getElementById("one").innerHTML = "志怡宝贝";
+        document.getElementById("one").innerHTML = txt;
+      }
+    </script>
+  </body>
+</html>

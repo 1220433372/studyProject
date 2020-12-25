@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyWeb</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: bisque;
+    }
+
+    #box {
+
+        width: 600px;
+        margin: 10px auto;
+    }
+
+    #detail {
+
+        width: 600px;
+        height: 300px;
+        border-width: 3px;
+        border-style: solid;
+        border-color: blue;
+        /* 上面三句等价于 border: 3px solid blue */
+        /* margin: 上 右 下 左;   指距外层 的上右下左的距离*/
+        padding: 15px;
+        border-radius: 20px;
+        /*边框圆角*/
+    }
+
+    h1 {
+        text-align: center;
+        background-color: blueviolet;
+        border-radius: 20px;
+        width: 150px;
+        box-shadow: 10px 10px saddlebrown;
+    }
+    p{
+        padding: 10px 25px;
+        /* padding  内层距外层的距离  */
+    }
+</style>
+
+<body>
+    <div id="box">
+        <div id="detail">
+            <h1>开业大吉</h1>
+            <p>辉光制作室热烈欢迎大家百忙之中抽出时间前来观看今天的表演！</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

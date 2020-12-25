@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>argumens的使用</title>
+</head>
+<body>
+    
+<script>
+
+//函数可以接受用户传递过来的参数当我们不知道有多少个参数时
+//可以用arguments获得这些参数
+function print(){
+
+for(let i = 0; i <arguments.length; i++){
+
+    console.log(arguments[i]);
+}
+  
+}
+
+print("45","孙先生","牛逼","456");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创建数组</title>
+  </head>
+  <body>
+    <script>
+      // --------一维数组--------
+      var arr = [1, 2, 3, 4];
+
+      //   arr.push(4);
+      arr[5] = 5;
+      console.log(arr.length);
+      console.log(arr);
+      // --------二维数组--------
+      //   var arr = [
+      //     [1, 2, 3, 4],
+      //     [5, 6, 7, 8],
+      //   ];
+
+      //   console.log(arr[0][0]);
+
+      // --------删除数组--------
+      console.clear();
+      var c = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+      // slice(1,1)从数组索引1开始删除1个元素 后面还可以加参数表示再添加元素
+      // a.slice(2, 2);
+      // c.slice(0, 3);
+      c.splice(2, 0, 7);
+      console.log(c);
+
+      // --------数组排序--------
+      // console.clear();
+
+      // var arr1 = [9, 6, 8, 5, 7, 3, 4, 2, 1];
+      // arr1.sort();
+      // console.log(arr1);
+      // // --------数组连接--------
+      // console.clear();
+      // var b = [1, 2, 3];
+      // var d = [4, 5, 6];
+      // console.log(b.concat(d));
+    </script>
+  </body>
+</html>

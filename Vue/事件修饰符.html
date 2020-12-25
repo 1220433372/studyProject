@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="js/vue.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<div :style="style" @click.right.prevent="handle"></div>
+		</div>
+	</body>
+
+	<!-- 
+
+  				2. 事件修饰符    
+                    * 键盘修饰符:keyup/press/down.按键名 则可以绑定相对应的按键
+                    * 点击修饰符.prevent:不提交表单
+                    * 点击修饰符.stop:停止冒泡
+                    * 点击修饰符.self:表示只有点击自己本身元素才会出发不会冒泡触发
+                    * @click.left:表示点击鼠标左键触发
+                    * @contextmenu/right:表示鼠标右键触发
+
+
+	 -->
+	<script>
+		let vm = new Vue({
+			el: "#app",
+			data: {
+				style: { border: "1px solid red", height: "300px" },
+			},
+			methods: {
+				handle() {
+					alert("sunxiansheng");
+				},
+			},
+		});
+	</script>
+</html>

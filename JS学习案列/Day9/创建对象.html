@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var stu = {
+        name: "德华",
+        age: 58,
+        position: "演员",
+        action() {
+          console.log("看书");
+        },
+      };
+
+      console.log(stu.name);
+      console.log(stu.action());
+
+      var teacher = new Object();
+      teacher.name = "星驰";
+      teacher.age = 60;
+      teacher.action = function () {
+        console.log("拍电影");
+      };
+      console.log(teacher.name);
+      console.log(teacher.action());
+
+      console.clear();
+
+      delete stu.name;
+      console.log(stu);
+      for (const key in stu) {
+        console.log(key);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标滑过显示详情</title>
+    <!-- style样式-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box {
+            /* CSS新盒子模型属性控制 width/height最终的宽高 */
+            box-sizing: border-box;
+            margin: 500px auto 10px;
+            width: 200px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border: 1px solid lightcoral;
+            position: relative;
+        }
+
+
+        .box .detail {
+            z-index: -1;
+            display: none;
+            position: absolute;
+            right: -100px;
+            top: -410px;
+            box-sizing: border-box;
+            width: 400px;
+            height: 0px;
+            line-height: 100px;
+            text-align: center;
+
+
+        }
+
+        .box:hover #logo {
+            box-shadow: 0 0 10px #fff;
+            -webkit-box-shadow: 0 0 19px #fff;
+            transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            /* IE 9 */
+            -moz-transform: rotate(360deg);
+            /* Firefox */
+            -webkit-transform: rotate(360deg);
+            /* Safari 和 Chrome */
+            -o-transform: rotate(360deg);
+            /* Opera */
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        }
+
+
+        /* hover 鼠标滑过 */
+        .box:hover .detail {
+
+
+            display: block;
+
+        }
+
+        img#logo {
+            width: 400px;
+            height: 400px;
+            background-size: cover;
+            border-radius: 200px;
+            box-shadow: 0px 0px 20px rgb(121, 127, 133);
+            border: 3px solid rgba(99, 176, 199, 0.137);
+            margin: 0 auto;
+            margin-top: -40px;
+            transition: all 1.0s;
+        }
+    </style>
+</head>
+
+<body>
+    <!--基于css-->
+    <div class="box">
+        <span>孙某辉</span>
+        <div class="detail">
+            <span><img src="1.png" id="logo"></span>
+
+        </div>
+    </div>
+</body>
+
+</html>

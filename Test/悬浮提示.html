@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      a {
+        display: block;
+        margin: 100px;
+        width: 100px;
+        font-size: 18px;
+      }
+      #msg {
+        background-color: gray;
+        height: 100px;
+        width: 300px;
+        font-size: 13px;
+        display: none;
+        position: absolute;
+      }
+    </style>
+    <script>
+      window.onload = function () {
+        var arr = [
+          "周星驰（Stephen Chow），1962年6月22日出生于中国香港，祖籍浙江宁波。华语影视男演员、导演、编剧、制作人、商人 [1-2]  ，政协委员 [3]  ，毕业于无线电视艺员训练班。国家一级演员 [4] ",
+          "刘德华（Andy Lau），1961年9月27日出生于中国香港，籍贯广东新会 [1]  ，华语影视男演员、歌手、制片人、作词人。",
+        ];
+
+        var msg = document.getElementById("msg");
+        var as = document.getElementsByTagName("a");
+        for (var i = 0; i < as.length; i++) {
+          //当鼠标经过时
+          as[i].index = i;
+          as[i].onmouseover = function () {
+            msg.style.display = "block";
+            msg.innerHTML = arr[this.index];
+          };
+          //当鼠标离开时
+          as[i].onmouseout = function () {
+            msg.style.display = "none";
+          };
+
+          as[i].onmousemove = function (ev) {
+            var e = ev || window.event;
+            msg.style.left = e.clientX + 20 + "px";
+            msg.style.top = e.clientY + 5 + "px";
+          };
+        }
+      };
+    </script>
+  </head>
+
+  <body>
+    <a href="#">星驰</a>
+    <a href="#">德华</a>
+    <div id="msg"></div>
+  </body>
+</html>
