@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body></body>
+	<script>
+		var nums = [1, 5, 8, 6, 7, 8, 9];
+		/* 
+        注意：filter的回调函数有一个要求：必须返回一个Boolean值
+        返回true时 函数会自动将这此回调的值加入到新的数组
+        返回false时 函数内部会过滤掉这次的值
+
+        filter 有三个参数 元素 下标  本身
+        */
+		var s = nums.filter(function (item, index, self) {
+			return item > 5;
+		});
+		console.log(s);
+	</script>
+</html>

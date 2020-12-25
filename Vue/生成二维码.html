@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <!-- 导入qrcode.js -->
+    <script type="text/javascript" src="http://static.runoob.com/assets/qrcode/qrcode.min.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h3>二维码生成</h3>
+        <input type="text" name="" v-model="msg">
+        <input type="button" value="生成" @click="creatQrCode">
+        <div class="qrcode" ref="qrCodeUrl"></div>
+    </div>
+</body>
+<script>
+
+    new Vue({
+        el: "#app",
+        data: {
+            msg: ""
+        },
+        methods: {
+            creatQrCode() {
+                that = this;
+                var qrcode = new QRCode(this.$refs.qrCodeUrl, {
+                    text: that.msg, // 需要转换为二维码的内容
+                    width: 100,
+                    height: 100,
+                    colorDark: '#000000',
+                    colorLight: '#ffffff',
+                    correctLevel: QRCode.CorrectLevel.H
+                })
+            },
+        },
+        mounted() {
+            console.log(this.$refs);
+        },
+    })
+</script>
+
+</html>

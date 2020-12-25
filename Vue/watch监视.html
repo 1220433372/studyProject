@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="js/vue.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model.number="one" @Focus="Odown" ref="one" />
+			+
+			<input type="text" v-model.number="two" @Focus="Tdown" ref="two" />
+			= {{sum}}
+		</div>
+	</body>
+	<script>
+		var vm = new Vue({
+			el: "#app",
+			data: {
+				one: 0,
+				two: 0,
+				sum: 0,
+			},
+			methods: {
+				Odown() {
+					this.$refs.one.value = "";
+				},
+				Tdown() {
+					this.$refs.two.value = "";
+				},
+			},
+			watch: {
+				// 使用这个属性，可以监听data中指定数据的变化，然后触发这个watch中对应的function处理函数
+				one: function () {
+					// 如果name属性发生改变就会触发这个函数
+					console.log("one");
+					this.sum = parseInt(this.one) + parseInt(this.two);
+				},
+				two: function () {
+					// 如果name属性发生改变就会触发这个函数
+					console.log("two");
+					this.sum = parseInt(this.one) + parseInt(this.two);
+				},
+			},
+		});
+	</script>
+</html>

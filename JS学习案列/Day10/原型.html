@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>原型</title>
+  </head>
+  <body>
+    <script>
+      function Employee(name, position) {
+        this.name = name;
+        this.position = position;
+        this.sinIn = function () {
+          console.log(this.name + "打卡");
+        };
+      }
+
+      var emp1 = new Employee("德华", "演员");
+      var emp2 = new Employee("星驰", "演员");
+
+      Employee.prototype.age = 20;
+      console.log(emp1.age);
+      console.log(emp2.age);
+      Employee.prototype.dothis = function () {
+        console.log("牛逼");
+      };
+
+      console.log(emp1.dothis());
+    </script>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Day0 - 表单</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	</head>
+
+	<style>
+		.container {
+			padding-right: 12px;
+			padding-left: 12px;
+			margin: 50px auto;
+			border-radius: 5px;
+			border: 1px solid rgb(189, 181, 181);
+		}
+	</style>
+
+	<!-- css 表单部分  -->
+	<body>
+		<!-- 
+			inline 内联显示 
+			默认 form 是块级
+			form-horizontal：水平排列
+			
+		-->
+		<div class="container">
+			<form class="form-horizontal">
+				<div class="form-group">
+					<label class="col-sm-2 control-label">Email</label>
+					<div class="col-sm-3">
+						<input
+							type="email"
+							class="form-control"
+							placeholder="Enter email"
+						/>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-sm-2 control-label">密码</label>
+					<div class="col-sm-3">
+						<input
+							type="password"
+							class="form-control"
+							placeholder="password"
+						/>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="file" class="col-sm-2 col-xs-offset-2" />
+				</div>
+				<div class="form-group">
+					<button class="btn-primary col-xs-offset-5 col-sm-1">提交</button>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

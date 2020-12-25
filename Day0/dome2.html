@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="an">an</button>
+  </body>
+  <script>
+    function listenButton1() {
+      console.log("监听button1");
+    }
+    function listenButton2() {
+      console.log("监听button2");
+    }
+    function listenButton3() {
+      console.log("监听button3");
+    }
+    document.getElementById("an").addEventListener("click", function () {
+      alert(123);
+    });
+  </script>
+</html>

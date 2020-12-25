@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Employee() {}
+
+      Employee.prototype.name = "德华";
+      Employee.prototype.department = "技术部";
+      var emp1 = new Employee();
+      //   console.log(emp1.name);
+
+      //   Object.setPrototypeOf(emp1, Employee.prototype);
+
+      console.log(emp1.department);
+      console.log(Object.getPrototypeOf(emp1));
+      for (const key in emp1) {
+        console.log(key);
+      }
+
+      console.clear();
+
+      var stu = {
+        id: 1,
+        title: "标题",
+      };
+
+      var a = { ...stu };
+      console.log(a.id);
+
+      console.clear();
+
+      function print() {
+        console.log("自动执行");
+      }
+      window.onload = print();
+    </script>
+  </body>
+</html>

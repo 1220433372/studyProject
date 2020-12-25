@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Day7</title>
+    <style>
+      a {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <a href="" onclick="sumbit()"></a>
+  <body>
+    <script>
+      var i = 10;
+      (function () {
+        var i = 20;
+        console.log("自己执行了！" + i);
+      })();
+
+      document.getElementById("form2");
+      console.log(i); //自执行函数内部的变量不会受外部的影响
+    </script>
+
+    <script type="text/javascript">
+      function a() {
+        $.ajax({
+          url: "LoaddataServlet", //servlet文件的名称
+          type: "GET",
+          success: function (e) {
+            alert("servlet调用成功！");
+          },
+        });
+      }
+
+      function submit() {}
+    </script>
+  </body>
+</html>

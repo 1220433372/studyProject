@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<script src="js/vue.js"></script>
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 自定义无属性值无参数指令 -->
+			<h2 v-mystyle>你好啊</h2>
+			<!-- 自定义有属性值无参数指令 -->
+			<h2 v-mystyle="'big'">你好啊</h2>
+			<!-- ！！！注意:根据属性值类型设置 如参数值是字符串 " '属性值' " -->
+
+			<!-- 自定义带参数指令 -->
+			<h2 v-mystyle:italic>你好啊</h2>
+
+			<li v-for="key in arr" v-myStyle="'small'">{{key}}</li>
+		</div>
+	</body>
+	<script>
+		let vm = new Vue({
+			el: "#app",
+			data: {
+				arr: ["德华", "星驰", "成龙", "学友"],
+			},
+			methods: {},
+			directives: {
+				mystyle: function (el, binding, vnode) {
+					el.style.color = "#" + Math.random().toString(16).slice(2, 8);
+					if (binding.value == "big") {
+						el.style.fontSize = "50px";
+					} else if (binding.value == "small") {
+						el.style.fontSize = "18px";
+					}
+
+					// 带参数的指令
+					if (binding.arg == "italic") {
+						el.style.fontStyle = "italic";
+					}
+				},
+			},
+		});
+	</script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<script src="js/vue.js"></script>
+	<title></title>
+</head>
+
+<body>
+	<!-- 
+
+    ## 同步
+    * 说明：如果子组件的数据发生变化 父组件的数据也会同步发生变化
+    修饰符.sync
+    注意：使用sync修饰符是传给子组件的值只能是数组，对象类型
+
+     -->
+	<div id="app">
+		父组件：{{getMsg}} 子组件：
+		<child :childlists.sync="lists"></child>
+
+	</div>
+</body>
+
+<script>
+	// 局部注册
+	var child = {
+		template: `
+		      <div>
+				<li v-for="(list, index) in childlists">{{list}}
+					<br>
+		     <input type="text" class="form-control" required="required" v-model="list.count" />
+		       </li>
+		    </div>
+		    `,
+		props: ["childlists"],
+		data() {
+			return {};
+		},
+	};
+
+	// 全局注册
+	Vue.component("mytag", {
+		template: `
+		  <div> <input type="text" v-model="num.id" /></div>
+      `,
+		props: ["num"],
+	});
+
+	let vm = new Vue({
+		el: "#app",
+		data: {
+			num: {
+				id: 0,
+				name: "德华",
+			},
+			lists: [
+				{
+					name: "冰激凌",
+					price: 4,
+					count: 1,
+					id: 1,
+				},
+				{
+					name: "香油条",
+					price: 4.5,
+					count: 1,
+					id: 1,
+				},
+				{
+					name: "泡面",
+					price: 5,
+					count: 1,
+					id: 1,
+				},
+			],
+		},
+		components: { child },
+		computed: {
+			getMsg() {
+				return this.lists.reduce(function (prev, curr) {
+					return prev + parseInt(curr.price) * parseInt(curr.count);
+				}, 0);
+			},
+		},
+	});
+</script>
+
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+		<link rel="stylesheet" href="css/animate.min.css" />
+		<style>
+			#app {
+				width: 100%;
+				overflow: hidden;
+				max-width: 800px;
+				margin: 10px auto;
+			}
+
+			ul {
+				display: block;
+				flex-wrap: wrap;
+				list-style: none;
+				max-width: 500px;
+				margin: 20px auto;
+				padding: 0;
+			}
+			li {
+				padding: 10px;
+				display: block;
+				flex-grow: 1;
+				flex-basis: 100px;
+				text-align: center;
+				border: 2px solid #eee;
+			}
+
+			/* keyframs关键帧动画的使用 */
+			.fade-enter-active {
+				animation: fadeInLeft 0.5s;
+			}
+			.fade-leave-active {
+				animation: fadeInLeft 0.5s reverse;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<input type="text" v-model="msg" @keyup.enter="pushData" /><button
+				@click="pushData"
+			>
+				add
+			</button>
+			<ul>
+				<transition-group name="fade">
+					<li v-for="(data,index) in dataList" :key="data">
+						<!-- 这里key 不能使用下标index -->
+						{{data}} <button @click="removeData(index)">delete</button>
+					</li>
+				</transition-group>
+			</ul>
+		</div>
+	</body>
+	<script>
+		new Vue({
+			el: "#app",
+			data: {
+				dataList: ["华仔", "星驰", "成龙"],
+				msg: "",
+			},
+			created() {
+				fetch("json/posts.json") //请求本地数据
+					.then((res) => res.json())
+					.then((data) => {
+						// console.log(data);
+						// this.dataList = data;
+					});
+			},
+			methods: {
+				removeData(index) {
+					this.dataList.splice(index, 1);
+				},
+				pushData() {
+					this.dataList.push(this.msg);
+				},
+			},
+		});
+	</script>
+</html>

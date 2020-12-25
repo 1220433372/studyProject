@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background-color: #888;
+      }
+      #app {
+        margin: 100px auto;
+        height: 100%;
+        width: 100%;
+      }
+      .imglist {
+        position: fixed;
+        margin: 80px auto;
+        left: 17%;
+        height: 496px;
+        border-radius: 8px;
+        transition: all 0.6s ease;
+        background-image: linear-gradient(
+          to bottom,
+          rgba(99, 94, 86, 0.5),
+          rgba(99, 94, 86, 0) 30%,
+          rgba(64, 65, 66, 0) 70%,
+          rgba(33, 34, 35, 0.9)
+        );
+      }
+      .active {
+        transform: translateY(-100px);
+      }
+      .imglist_selected {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        transition: all 0.6s ease;
+        cursor: pointer;
+      }
+      .imglist_active {
+        transform: translateY(-70%);
+      }
+      .detail {
+        position: fixed;
+        margin: 80px auto;
+        left: 17%;
+        height: 496px;
+        z-index: -10;
+        transition: all 0.6s ease;
+        border-radius: 8px;
+      }
+      .detailImg {
+        border-radius: 8px;
+        opacity: 0;
+        transition: all 0.6s ease;
+      }
+      .detailImg_active {
+        border-radius: 8px;
+        opacity: 1;
+        transform: scale(1.1);
+        transition: all 0.6s ease;
+        cursor: pointer;
+      }
+      .detailImg_selected {
+        position: fixed;
+        margin: 0 auto;
+        right: 0;
+        bottom: 0;
+        transform: scale(1);
+        transition: all 0.6s ease;
+      }
+      .detail_active {
+        transform: scale(1.2);
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <img
+        src="img/washington.png"
+        alt=""
+        :class="isCard ? isActive:cardlist"
+        @click="showCard"
+      />
+      <span class="detail">
+        <img
+          src="img/san_francisco.png"
+          alt=""
+          height="496px"
+          :class="isCard?detail_active:detailImg"
+          @click="showDetail"
+        />
+      </span>
+    </div>
+  </body>
+  <script>
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          isDetail: false,
+          //   使用变量来设置别名
+          cardlist: "imglist",
+          detailImg: "detailImg",
+          detail_active: "detailImg_active",
+          //   cardlist: "imglist_selected",
+          isActive: "imglist active ",
+          isCard: false,
+        };
+      },
+      methods: {
+        showDetail() {
+          if (this.isDetail) {
+            this.isActive = "imglist active ";
+            this.isDetail = false;
+            this.detail_active = "detailImg_active";
+          } else {
+            this.isActive = "imglist_selected imglist_active ";
+            this.isDetail = true;
+            this.detail_active = "detailImg_selected detail_active";
+
+            console.log(1);
+          }
+        },
+        showCard() {
+          if (!this.isDetail == true) this.isCard = !this.isCard;
+        },
+      },
+    });
+  </script>
+</html>

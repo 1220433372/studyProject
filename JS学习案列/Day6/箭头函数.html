@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      //使用方法
+      //无参数时
+
+      var dome = () => {
+        console.log("hellow");
+      };
+
+      有参数时;
+      var dome = (name) => {
+        console.log("hellow" + name);
+      };
+
+      dome("孙先生");
+
+      有多个参数时;
+      var dome = (name, weather) => {
+        console.log("hellow" + name + weather);
+      };
+      dome("孙先生", "晴天");
+
+      //也可以这样使用
+
+      var increment = (x) => x + 1;
+
+      console.log(increment(7));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/vue.js"></script>
+</head>
+<style>
+    th,
+    td {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .toast {
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        background: #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        opacity: 0.8;
+        color: #fff;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span12">
+                    <table class="table table-bordered table-hover ">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>
+                                    书籍名称
+                                </th>
+                                <th>
+                                    出版日期
+                                </th>
+                                <th>
+                                    价格
+                                </th>
+                                <th>
+                                    购买数量
+                                </th>
+                                <th>
+                                    操作
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="(book, index) in books" :key="index">
+                                <td>{{index+1}}</td>
+                                <td>{{book.name}}</td>
+                                <td>{{book.data}}</td>
+                                <td>{{book.price|yuan}}</td>
+                                <td>
+                                    <button class="btn btn-default" @click="reduce(index)">-</button>
+                                    {{book.count}}
+                                    <button class="btn btn-default" @click="add(index)">+</button>
+                                </td>
+                                <td><button class="btn btn-default" @click="remove(index)">移除</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h4 v-show="isShow"> 总价格{{total|yuan}}</h4>
+                    <h1 class="toast" v-show="isToast">移除成功</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<script>
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            isToast: false,
+            isShow: false,
+            books: [
+                {
+                    id: 1,
+                    name: "《算法导论》",
+                    data: "2019-6-5",
+                    price: 85,
+                    count: 1
+                },
+                {
+                    id: 2,
+                    name: "《java入门教学》",
+                    data: "2012-6-5",
+                    price: 65,
+                    count: 1
+                },
+                {
+                    id: 3,
+                    name: "《Spring从入门到放弃》",
+                    data: "2015-5-1",
+                    price: 75,
+                    count: 1
+                }
+            ]
+        },
+        // 过滤器
+        filters: {
+            yuan(value) {
+                return "￥" + value.toFixed(2);
+                // toFixed(2):说明保留两位小数
+            }
+        },
+        methods: {
+            reduce(index) {
+                this.books[index].count > 0 ? this.books[index].count-- : alert("不能小于0");
+
+            },
+            add(index) {
+                this.books[index].count++;
+            },
+            remove(index) {
+                this.isToast = true;
+                // 延迟执行
+                setTimeout(() => {
+                    this.isToast = false;
+                }, 1000);
+                this.books.splice(index, 1);
+            }
+        },
+        computed: {
+            total() {
+                var sum = this.books.reduce((pre, cur) => {
+                    return pre + cur.price * cur.count;
+                }, 0);
+                // 只有购买数量大于1时总价格才显示出来
+                if (sum > 0) {
+                    this.isShow = true;
+                    return sum;
+                } else {
+                    this.isShow = false;
+                    return sum;
+                }
+
+            }
+        }
+    });
+</script>
+
+</html>

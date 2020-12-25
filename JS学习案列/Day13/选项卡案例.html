@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #div1 div {
+        border: 2px solid rgb(54, 156, 216, 169);
+        width: 306px;
+        height: 400px;
+        display: none;
+      }
+
+      #div1 button {
+        width: 100px;
+        height: 30px;
+        background-color: gray;
+        font-size: 18px;
+      }
+      #div1 .active {
+        background-color: rgb(194, 207, 73);
+      }
+    </style>
+
+    <script>
+      window.onload = function () {
+        var div1 = document.getElementById("div1");
+        var btns = div1.getElementsByTagName("button");
+        var divs = div1.getElementsByTagName("div");
+
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].index = i;
+          btns[i].onclick = function () {
+            for (let x = 0; x < btns.length; x++) {
+              btns[x].className = "";
+              divs[x].style.display = "none";
+            }
+
+            divs[this.index].style.display = "block";
+            this.className = "active";
+          };
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <div id="div1">
+      <button class="active">按钮一</button>
+      <button>按钮二</button>
+      <button>按钮三</button>
+
+      <div style="display: block">页面一</div>
+      <div>页面二</div>
+      <div>页面三</div>
+    </div>
+  </body>
+</html>

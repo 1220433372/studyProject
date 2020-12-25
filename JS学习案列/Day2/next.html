@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+
+
+    @keyframes move {
+
+        0% {
+            left: 400px;
+        }
+
+        100% {
+            left: 0px;
+        }
+    }
+</style>
+
+<body>
+
+
+    <p id="box">
+
+
+    </p>
+    <button onclick="dian()">点击</button>
+
+    <script>
+        // querySelector() 方法仅仅返回匹配指定选择器的第一个元素。如果你需要返回所有的元素，请使用 querySelectorAll() 方法替代。
+        //getElementById() 方法可返回对拥有指定 ID 的第一个对象的引用。getElementsByName() 方法可返回带有指定名称的对象的集合。
+        let demo = document.getElementById("box");
+
+
+        function dian() {
+            demo.style.position = "absolute";
+            demo.style.width = "100px";
+            demo.style.height = "40px";
+            demo.style.webkitAnimationDuration = "3s";
+            demo.style.animationName = "move";
+            demo.style.backgroundColor = 'red';
+            demo.style.animationIterationCount = "infinite";
+            // demo.style.transitionProperty = "all";
+            // demo.style.transitionDelay = "3s";
+
+
+
+        }
+    </script>
+</body>
+
+</html>

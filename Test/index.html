@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My web</title>
+    <script src="js/1.js"></script>
+  </head>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .head {
+      margin: 20px auto;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      box-sizing: border-box;
+      text-align: center;
+      border: 1px solid salmon;
+    }
+
+    .nei {
+      margin: 100px auto;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      box-sizing: border-box;
+      text-align: center;
+      border: 1px solid seagreen;
+      position: relative;
+    }
+    .nei:hover {
+      border-bottom: none;
+    }
+    .nei:hover .detail {
+      border-top: none;
+      display: block;
+    }
+
+    .nei .detail {
+      position: absolute;
+      display: none;
+      box-sizing: border-box;
+      border: 1px solid seagreen;
+      width: 200px;
+      height: 40px;
+      line-height: 40px;
+      margin-left: -1px;
+      margin-top: -2px;
+    }
+  </style>
+  <body>
+    <div class="head">
+      <span>辉光制作室</span>
+    </div>
+    <div class="baby">
+      <marquee direction="left">世界那么大还是遇见你</marquee>
+    </div>
+    <div class="nei">
+      <span>辉先生</span>
+      <div class="detail">
+        <span> 家家户户都知道的年轻人 </span>
+      </div>
+    </div>
+  </body>
+</html>

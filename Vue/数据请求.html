@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.20.0/axios.js"></script>
+</head>
+
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="item in dataList">{{item.name}}</li>
+		</ul>
+	</div>
+</body>
+<script>
+	axios.interceptors.request.use(config => {
+		console.log(config);
+		return config
+	})
+	new Vue({
+		el: "#app",
+		data: {
+			msg: "",
+			dataList: [],
+		},
+		methods: {},
+		created() {
+			// fetch请求：
+			// fetch("http://localhost:8080/h1").then(res => res.json()).then(res => {
+			//     console.log(res);
+			// })
+
+			// axios请求
+			that = this;
+			axios
+				.get("http://jsonplaceholder.typicode.com/users")
+				.then(function (request) {
+					that.dataList = request.data;
+					console.log(request.data);
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		},
+		computed: {},
+	});
+</script>
+
+</html>

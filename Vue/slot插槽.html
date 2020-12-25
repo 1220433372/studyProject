@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child>
+				<p slot="kk">nb</p>
+				<!-- 具名插槽 -->
+				<p>kndas</p>
+				<!-- 让其可以在组件里面再写其他的内容 -->
+			</child>
+		</div>
+	</body>
+	<script>
+		//   <slot></slot>:给组件留一个插槽
+		//   具名插槽<slot name=''></slot>
+		Vue.component('child', {
+			template: `
+            <div>
+                <button >点击</button>
+                <slot name='kk'></slot>
+								<slot></slot>
+            </div>
+            `,
+		});
+		new Vue({
+			el: '#app',
+			data: {
+				msg: '',
+				dataList: [],
+			},
+		});
+	</script>
+</html>

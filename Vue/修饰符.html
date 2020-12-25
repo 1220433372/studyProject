@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+
+        <input type="text" name="" class="form-control" v-model='msg'>
+        <!-- 
+        v-model:修饰符
+        1.  .number 只接收数字(但不能是字母符号开头)
+        2.  .trim   去除首尾空格
+    -->
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            msg: ''
+        }
+    })
+</script>
+
+</html>

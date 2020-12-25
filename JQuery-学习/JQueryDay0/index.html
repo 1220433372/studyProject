@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Day0-JQuery</title>
+		<script src="./js/jquery-3.5.1.js"></script>
+	</head>
+	<body>
+		<!--   
+    - 什么是JQuery？
+    - JQuery其实就是一个封装了很多方法的库
+    - 我们学习JQuery就是学习如何使用这些方法
+    - 如何使用：
+        
+    -->
+		<div id="div1"></div>
+		<div></div>
+	</body>
+	<script>
+		$(document).ready(function () {
+			/*1.入口函数
+			 * 在JQuery中入口函数可以有多个
+			 */
+
+			$("#div1").width(100).height(100).css("color", "red").text("牛逼");
+			//特性： 链式编程
+		});
+	</script>
+</html>

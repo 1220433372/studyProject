@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div>
+      <ul id="ul1">
+        <li class="box">星驰</li>
+        <li>德华</li>
+        <li class="box">成龙</li>
+        <li>李连杰</li>
+        <li>王宝强</li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    //   查询某个节点的指定子节点
+    function getNameChildTagAll(node, classStr) {
+      var nodes = node.getElementsByTagName("*"); //*号是通配符
+      var arr = [];
+      for (let i = 0; i < nodes.length; i++) {
+        if (nodes[i].className === classStr) arr.push(nodes[i]);
+      }
+      return arr;
+    }
+    var child = document.getElementById("ul1");
+    var arr = getNameChildTagAll(child, "box");
+    for (var key of arr) {
+      key.style.color = "red";
+      console.log(key);
+    }
+  </script>
+</html>

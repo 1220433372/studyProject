@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+	<script src="js/vue.js"></script>
+	<link rel="stylesheet" href="css/animate.min.css" />
+	<style>
+		/* transition动画的使用 */
+		.v-enter-active,
+		.v-leave-active {
+			transition: all 0.3s;
+		}
+
+		.v-enter,
+		.v-leave-to {
+			opacity: 0;
+			transform: translateX(100px);
+		}
+
+		/* keyframs关键帧动画的使用 */
+		.fade-enter-active {
+			transform-origin: left center;
+			animation: bounceInLeft 1s;
+		}
+
+		.fade-leave-active {
+			transform-origin: left center;
+			animation: bounceInLeft 1s reverse;
+		}
+	</style>
+</head>
+
+<body>
+	<!-- 
+            <transition name="" enter-active-class="" leave-active-class=""> 
+
+            </transition><transition name="v"> 
+        -->
+	<div id="app">
+		<button @click="isShowT = ! isShowT">transion点击</button>
+
+		<button @click="isShowK = ! isShowK">transion点击</button>
+
+		<button @click="tab = ! tab">多个元素过度</button>
+		<transition name="v">
+			<div v-show="isShowT">1111111</div>
+		</transition>
+
+		<transition name="fade">
+			<div v-show="isShowK">2222222</div>
+		</transition>
+
+		<transition name="v" mode="out-in">
+			<!-- 
+					mode="out-in"
+					控制是先进还是先出
+				-->
+			<p v-if="tab" key="1">德华</p>
+			<p v-else key="2">星驰</p>
+		</transition>
+	</div>
+</body>
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			msg: "",
+			isShowT: true,
+			isShowK: true,
+			dataList: [],
+			tab: true,
+		},
+	});
+</script>
+
+</html>
